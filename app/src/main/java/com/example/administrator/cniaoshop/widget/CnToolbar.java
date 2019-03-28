@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
@@ -31,19 +32,18 @@ public class CnToolbar extends Toolbar {
     private View mView;
     private TextView mTextTitle;
     private EditText mSearchView;
-    private Button mRightButton;
+    private ImageButton mRightButton;
     public CnToolbar(Context context) {
-        super(context);
+        this(context,null);
     }
 
     public CnToolbar(Context context, AttributeSet attributeSet) {
-        super(context,attributeSet);
+        this(context,attributeSet,0);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public CnToolbar(Context context, AttributeSet attributeSet, int def) {
         super(context,attributeSet,def);
-
         initView();
 
         setContentInsetsRelative(10,10);
@@ -63,6 +63,10 @@ public class CnToolbar extends Toolbar {
                 showSearchView();
                 hideTitleView();
             }
+//            CharSequence rightButtonText = a.getText(R.styleable.CnToolBar_rightButtonText);
+//            if(rightButtonText !=null){
+//                setRightButtonText(rightButtonText);
+//            }
             a.recycle();
         }
     }
@@ -87,26 +91,31 @@ public class CnToolbar extends Toolbar {
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public void setRigthButtonIcon(Drawable icon){
         if(mRightButton!=null){
-            mRightButton.setBackground(icon);
+           mRightButton.setImageDrawable(icon);
             mRightButton.setVisibility(VISIBLE);
         }
     }
+
+
+//    public void  setRightButtonIcon(Drawable icon){
+        //setRightButtonIcon(getResources().getDrawable(icon));
+//    }
     public void setmRightButtonOnClickListener(OnClickListener listener){
         mRightButton.setOnClickListener(listener);
     }
 
-    public void setRightButtonText(CharSequence text){
-        mRightButton.setText(text);
-        mRightButton.setVisibility(VISIBLE);
-    }
+//    public void setRightButtonText(CharSequence text){
+//        mRightButton.setText(text);
+//        mRightButton.setVisibility(VISIBLE);
+//    }
 
-    public void setRightButtonText(int id){
-        setRightButtonText(getResources().getString(id));
-    }
+//    public void setRightButtonText(int id){
+//        setRightButtonText(getResources().getString(id));
+//    }
 
 
 
-    public Button getRightButton(){
+    public ImageButton getRightButton(){
 
         return this.mRightButton;
     }
