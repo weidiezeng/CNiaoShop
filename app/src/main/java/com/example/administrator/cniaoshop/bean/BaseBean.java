@@ -5,6 +5,7 @@ import java.io.Serializable;
 /**
  * 作者：created by weidiezeng on 2019/3/29 08:51
  * 邮箱：1067875902@qq.com
+ * 描述: 初始数据
  */
 public class BaseBean implements Serializable {
     protected   long id;
